@@ -1,1 +1,22 @@
-__pycache__
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# SQLite database
+ecommerce.db
+
+# Alembic migration files (optional, nếu không muốn lưu migration lên git)
+alembic/versions/
+
+# Môi trường ảo
+.venv/
+
+# File cấu hình môi trường
+.env
+
+# VSCode settings
+.vscode/
+
+# Thư mục/mục log
+*.log
