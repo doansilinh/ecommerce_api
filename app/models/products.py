@@ -1,3 +1,4 @@
+import uuid
 from sqlalchemy import Column, String, ForeignKey, Numeric
 from sqlalchemy.orm import relationship
 from app.database import Base
@@ -6,7 +7,9 @@ from app.database import Base
 class Products(Base):
     __tablename__ = "products"
 
-    product_id = Column(String(50), primary_key=True, index=True)
+    product_id = Column(
+        String(50), primary_key=True, index=True, default=lambda: str(uuid.uuid4())
+    )
     product_name = Column(String(50))
     category = Column(String(50))
     supplier_id = Column(String(50), ForeignKey("suppliers.supplier_id"))

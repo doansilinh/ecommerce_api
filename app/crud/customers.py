@@ -16,9 +16,9 @@ def get_customer(db: Session, customer_id: str):
 def create_customer(db: Session, customer: CustomerCreate):
     db_customer = Customers(
         customer_id=str(uuid.uuid4()),
-        created_at=date.today(),  # sinh ngày hiện tại nếu không có
-        is_active="1",  # hoặc giá trị mặc định bạn muốn
-        **customer.dict(),
+        created_at=date.today(),
+        is_active="1",
+        **customer.model_dump(),
     )
     db.add(db_customer)
     db.commit()
@@ -30,7 +30,7 @@ def update_customer(db: Session, customer_id: str, customer_update: CustomerUpda
     db_customer = get_customer(db, customer_id)
     if not db_customer:
         return None
-    for key, value in customer_update.dict(exclude_unset=True).items():
+    for key, value in customer_update.model_dump(exclude_unset=True).items():
         setattr(db_customer, key, value)
     db.commit()
     db.refresh(db_customer)

@@ -32,7 +32,7 @@ class CustomerCreate(BaseModel):
     birthday: date
     email: str
     phone: str
-    marital_status: str  # Sửa lại tên trường
+    marital_status: str
     education: str
     job: str
     nationality: str
